@@ -17,7 +17,6 @@ This repository documents two lines of investigation:
 1. **Fine-tuning multilingual transformers** (mT5 family, LoRA) - attempted first and documented including the environment and compute obstacles that led to it being abandoned partway through.
 2. **Retrieval-based question answering** - a hybrid TF-IDF + multilingual sentence-embedding system, tuned per language, which became the final approach.
 
-Full methodology, all ten experiments, results, and discussion are in the accompanying report: `Odero Anjeline Noel_FinalProject.pdf`.
 
 
 ## Results Summary
@@ -29,22 +28,20 @@ Full methodology, all ten experiments, results, and discussion are in the accomp
 | E03 | Semantic embeddings only | 0.4135 | 0.483847 |
 | E04 | Hybrid 50/50 (TF-IDF + semantic) | 0.4454 | 0.528427 |
 | E05 | Per-language weight tuning | **0.4736** | **0.548082** |
-| E06 | Exact-match lookup | 0.4731 | pending |
-| E07 | Deduplicated corpus | 0.4732 | pending |
-| E08 | Cross-subset fallback (low-resource langs) | 0.4731 | pending |
-| E09 | Similarity threshold fallback | 0.4732 | pending |
-| E10 | Final combined model (Train+Val corpus) | 0.4736* | pending |
+| E06 | Exact-match lookup | 0.4731 | 0.545170 |
+| E07 | Deduplicated corpus | 0.4732 | 0.547978 |
+| E08 | Cross-subset fallback (low-resource langs) | 0.4731 | 0.547978 |
+| E09 | Similarity threshold fallback | 0.4732 | 0.545742 |
+| E10 | Final combined model (Train+Val corpus) | 0.4736* | 0.560748 |
 
 Best result so far: **Experiment 5** - per-language tuned hybrid retrieval, public leaderboard score **0.548082**.
 
-Full experiment rationale, ablation analysis, and discussion of why E06–E09 plateaued are in the report.
 
 ## Repository Structure
 
 ```
 Zindi-Health_QA/
 ├── Zindi_health_qa.ipynb                  # Main notebook - retrieval pipeline, all 10 experiments
-├── Odero Anjeline Noel_FinalProject.pdf   # Full academic report
 ├── data/                                  # Train.csv, Val.csv, Test.csv, SampleSubmission.csv
 ├── submissions/                           # Per-experiment Zindi submission CSVs (E01-E10)
 └── README.md
